@@ -2,10 +2,9 @@
 
 ## 📖 Overview
 
-This script automatically generates an Excel file summarizing **robots’ and sites’ performance data** based on two input CSV files:
+This script automatically generates an Excel file summarizing **robots’ and sites’ performance data** based on input CSV file:
 
-- `Robots SN.csv`
-- `Sites Name.csv`
+- `User Inputs.csv`
 
 It creates a structured Excel sheet with calculated columns and formulas ready for data entry and reporting.
 
@@ -28,11 +27,11 @@ Run the following command in your terminal or command prompt:
 pip install openpyxl
 ```
 
-### 📁 3. Input Files
+### 📁 3. Input File
 
-You must have the following CSV files in the **same directory** as `generate.py`:
+You must have the `User Inputs.csv` CSV file in the **same directory** as `generate.py` it has 3 columns:
 
-#### `Robots SN.csv`
+#### `Column 1: Robots SN`
 
 A list of robot serial numbers (one per line).
 Example:
@@ -43,7 +42,7 @@ SN002
 SN003
 ```
 
-#### `Sites Name.csv`
+#### `Column 2: Sites Name`
 
 A list of site names (one per line).
 Example:
@@ -54,21 +53,29 @@ Site_B
 Site_C
 ```
 
+#### `Column 3: Cumulative Acres since Date`
+
+A String of Cumulative Acres since Date (one value @ the second line).
+Example:
+
+```
+10/20/2025
+```
+
 > ⚠️ **Important:**
 >
-> - The first cell in each CSV will be ignored by the script (so it can contain a header like “Robot SN” or “Site Name”).
+> - The first Row cells in each Column will be ignored by the script (so it can contain a header like “Robot SN” or “Site Name” or “Cumulative Acres since...?”).
 > - Do **not** leave completely empty lines inside the file.
 
 ---
 
 ## 🚀 How to Use
 
-1. Place all three files in the same folder:
+1. Place all two files in the same folder:
 
    ```
    generate.py
-   Robots SN.csv
-   Sites Name.csv
+   User Inputs.csv
    ```
 
 2. Open a terminal or command prompt in that folder.
@@ -81,7 +88,7 @@ Site_C
 
 4. The script will:
 
-   - Read both CSV files.
+   - Read CSV file.
    - Validate that the total number of columns fits within Excel’s limit.
    - Create a structured Excel file named:
 
@@ -131,12 +138,12 @@ please fit the Boundary equation: 7 * N + N * M + 6 * M =< 18275
 
 ## 🪲 Troubleshooting
 
-| Problem                                           | Possible Cause          | Solution                                             |
-| ------------------------------------------------- | ----------------------- | ---------------------------------------------------- |
-| `ModuleNotFoundError: No module named 'openpyxl'` | Library not installed   | Run `pip install openpyxl`                           |
-| “Boundaries was broken!”                          | Too many robots/sites   | Reduce number of entries                             |
-| Output file not created                           | Missing input CSV files | Make sure both CSV files exist in the same directory |
-| Blank or missing headers                          | Empty first line in CSV | Remove extra empty lines                             |
+| Problem                                           | Possible Cause          | Solution                                       |
+| ------------------------------------------------- | ----------------------- | ---------------------------------------------- |
+| `ModuleNotFoundError: No module named 'openpyxl'` | Library not installed   | Run `pip install openpyxl`                     |
+| “Boundaries was broken!”                          | Too many robots/sites   | Reduce number of entries                       |
+| Output file not created                           | Missing input CSV file  | Make sure CSV file exist in the same directory |
+| Blank or missing headers                          | Empty first line in CSV | Remove extra empty lines                       |
 
 ---
 
@@ -144,20 +151,13 @@ please fit the Boundary equation: 7 * N + N * M + 6 * M =< 18275
 
 **Input:**
 
-- `Robots SN.csv`
+- `User Inputs.csv`
 
   ```
-  Robot SN
-  R1
-  R2
-  ```
-
-- `Sites Name.csv`
-
-  ```
-  Site Name
-  Site_A
-  Site_B
+  Robot's Serial Number,Site's Name,Cumulative Acres since ... ?
+  R1,Site_A,10/20/2025
+  R2,Site_B,
+  R3,,
   ```
 
 **Run:**
@@ -167,7 +167,7 @@ python generate.py
 ```
 
 **Output File:**
-`2_Robots_2_Sites.xlsx`
+`3_Robots_2_Sites.xlsx`
 
 ---
 
