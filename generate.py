@@ -108,8 +108,8 @@ row_1[3 * N + 1] = "Site"
 if N != 0:
     robotSummaryStartIndex = 4 * N + 2
     for index, Robot_SN in enumerate(Robots_SN):
-        row_1[1 + index * 3] = Robot_SN
-        row_1[robotSummaryStartIndex + index * 3] = Robot_SN
+        row_1[1 + index * 3] = "SN " + Robot_SN
+        row_1[robotSummaryStartIndex + index * 3] = "SN " + Robot_SN
 
 #filling Sites Name 
 if M != 0:
@@ -138,10 +138,10 @@ if N != 0:
         row_2[1 + index * 3] = "Acres"
         row_2[2 + index * 3] = "First gtg (Time)"
         row_2[3 + index * 3] = "Stop request (Time)"
-        row_2[robotSitesStartIndex + index] = Robot_SN
-        row_2[robotSummaryStartIndex + index * 3] = Robot_SN + "'s total acres"
+        row_2[robotSitesStartIndex + index] = "SN " + Robot_SN
+        row_2[robotSummaryStartIndex + index * 3] = "SN " + Robot_SN + "'s total acres"
         row_2[robotSummaryStartIndex + 1 + index * 3] = "Available time"
-        row_2[robotSummaryStartIndex + 2 + index * 3] = Robot_SN 
+        row_2[robotSummaryStartIndex + 2 + index * 3] = "SN " + Robot_SN 
 
 #filling Sites Name 
 if M != 0:
